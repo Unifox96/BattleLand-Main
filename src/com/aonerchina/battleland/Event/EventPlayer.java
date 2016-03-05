@@ -14,7 +14,7 @@ public class EventPlayer implements Listener{
 		BLPlayer p = (BLPlayer) e.getPlayer();
 		p.playEffect(p.getLocation(), Effect.FLAME, 1);
 		if (!p.isPlayed()) {
-			
+			p.sendLstMsg("first-join.motd-sel-pro");
 		}
 	}
 }

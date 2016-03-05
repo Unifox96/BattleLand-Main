@@ -1,5 +1,7 @@
 package com.aonerchina.battleland.API;
 
+import java.util.List;
+
 import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.entity.Player;
 
@@ -17,7 +19,13 @@ public abstract class BLPlayer implements Player{
 	public FileConfiguration getBLConfig() {
 		return this.playerconfig;
 	}
-	public void sendBLMessage(String path) {
-		
+	public void sendStrMsg(String path) {
+		this.sendMessage(ConfigUtil.getMsgStr(path));
+	}
+	public void sendLstMsg(String path) {
+		List<String> list = ConfigUtil.getMsgList(path);
+		for (String s : list) {
+			this.sendMessage(s);
+		}
 	}
 }
