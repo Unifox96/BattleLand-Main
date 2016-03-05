@@ -1,5 +1,6 @@
 # BattleLand
-# by a-one-r (A1iR)
+by a-one-r (A1iR)
+
 A bukkit plugin with lots of RPG Features
 
 Simple introduce:
