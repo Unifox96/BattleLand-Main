@@ -8,11 +8,10 @@ import org.bukkit.event.player.PlayerJoinEvent;
 import com.aonerchina.battleland.API.BLPlayer;
 
 public class EventPlayer implements Listener{
-	@SuppressWarnings("deprecation")
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
-		BLPlayer p = (BLPlayer) e.getPlayer();
-		p.playEffect(p.getLocation(), Effect.FLAME, 1);
+		BLPlayer p = new BLPlayer(e.getPlayer());
+		p.playEffect(p.getLocation(), Effect.FLAME, 100);
 		if (!p.isPlayed()) {
 			p.sendLstMsg("first-join.motd-sel-pro");
 		}
