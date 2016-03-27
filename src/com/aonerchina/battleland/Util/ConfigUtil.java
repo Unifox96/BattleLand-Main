@@ -19,8 +19,10 @@ public class ConfigUtil {
 	public static void initConfig() {
 		BL plugin = BL.getInstance();
 		plugin.saveResource("config.yml", false);
+		createFolder("Pro");
 		createFolder("languages");
 		relRes("lang-zh_cn.yml", "languages\\lang-zh_cn.yml");
+		relRes("Warrior.yml", "Pro\\Warrior.yml");
 	}
 
 	public static FileConfiguration getConfig(String name) {
