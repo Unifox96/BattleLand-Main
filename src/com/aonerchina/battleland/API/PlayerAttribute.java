@@ -3,6 +3,9 @@ package com.aonerchina.battleland.API;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class PlayerAttribute {
+    /*
+     *  Can this be replaced by Player MetaData..?
+     */
 	public int HP;
 	public int MP;
 	public int PA;
