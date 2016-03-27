@@ -1,9 +1,18 @@
-# BattleLand
-by a-one-r (A1iR)
+## BattleLand  by a-one-r (A1iR)
+#### Minecraft MMORPG Project ####
+---
+#### HEAD UP ####
+* I can not think of any other features, it always looks mediocre.
+* so I began to learn some MMOPRG online games design.
 
-A bukkit plugin with lots of RPG Features
-
-Simple introduce:
-1. Select an occupation.
-2. PvP. You can use special magic, depends on your occupation.
-3. Upgrade your occupation. Each level unlocks some new stuff.
+#### Basical Feature List
+- Level system (Lv.XX)
+- Modern chat system
+ - [World][a1irdG4mer] > Temple of Atal'Hakkar 3p needed. lv50 up
+- PvE Map?
+  - Custom drops.
+  - Deluxe particle FX
+- Friend system
+- Pro system (Knight, wizard etc)
+ - Pro-changing system
+- incoming...
