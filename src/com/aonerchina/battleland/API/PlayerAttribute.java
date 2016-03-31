@@ -3,9 +3,9 @@ package com.aonerchina.battleland.API;
 import org.bukkit.configuration.file.FileConfiguration;
 
 public class PlayerAttribute {
-    /*
-     *  Can this be replaced by Player MetaData..?
-     */
+	/*
+	 * Can this be replaced by Player MetaData..?
+	 */
 	public int HP;
 	public int MP;
 	public int PA;
@@ -15,6 +15,7 @@ public class PlayerAttribute {
 	public int SP;
 	public int LK;
 	public int EG;
+
 	public PlayerAttribute(FileConfiguration pro_config) {
 		this.HP = pro_config.getInt("points.inital.hp");
 		this.MP = pro_config.getInt("points.inital.mp");
