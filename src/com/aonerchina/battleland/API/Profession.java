@@ -12,7 +12,6 @@ import org.bukkit.inventory.meta.ItemMeta;
 
 import com.aonerchina.battleland.BL;
 import com.aonerchina.battleland.Util.ChatColorUtil;
-import com.aonerchina.battleland.Util.ConfigUtil;
 
 import net.md_5.bungee.api.ChatColor;
 
@@ -51,5 +50,5 @@ public class Profession {
 	public ItemStack getSymbol() {
 		return symbolItem;
 	}
-	
+
 }

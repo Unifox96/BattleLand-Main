@@ -1,35 +1,34 @@
 package com.aonerchina.battleland.Event;
 
-import java.util.Map;
+import java.util.Map.Entry;
 
 import org.bukkit.Bukkit;
-import org.bukkit.Effect;
 import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
+import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.block.BlockPlaceEvent;
+import org.bukkit.event.inventory.InventoryAction;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.player.PlayerJoinEvent;
 import org.bukkit.inventory.ItemStack;
 
 import com.aonerchina.battleland.BL;
 import com.aonerchina.battleland.API.BLPlayer;
+import com.aonerchina.battleland.API.BLWindow;
 import com.aonerchina.battleland.API.BLWindowItemClickRunnable;
 
 public class EventPlayer implements Listener {
 	@EventHandler
 	public void onJoin(PlayerJoinEvent e) {
-		e.setJoinMessage("");
+		e.setJoinMessage(null);
 		BLPlayer p = new BLPlayer(e.getPlayer());
 		Bukkit.getScheduler().runTaskLater(BL.getInstance(), new Runnable() {
 			public void run() {
 				if (!p.isPlayed()) {
-					p.sendLstMsg("first-join.motd-sel-pro");
-					p.playEffect(p.getLocation(), Effect.HEART, 500);
 					p.playSound(p.getLocation(), Sound.LEVEL_UP, 100, 1);
-					BL.getWindow_SelectPro().sendToPlayer(p);
 				}
 			}
 		}, 20L);
@@ -48,15 +47,20 @@ public class EventPlayer implements Listener {
 			e.setCancelled(true);
 		}
 	}
-	
-	@EventHandler
+
+	@EventHandler(priority = EventPriority.LOW)
 	public void onInvClick(InventoryClickEvent e) {
-		for (Map.Entry<ItemStack, BLWindowItemClickRunnable> entry : BL.getInstance().getInventoryButtonMap().entrySet()) {
-			if (e.getCurrentItem().isSimilar(entry.getKey())) {
-				BLWindowItemClickRunnable runnable = BL.getInstance().getInventoryButtonMap().get(e.getCurrentItem());
-				runnable.setPlayer((Player) e.getWhoClicked());
-				runnable.setItemStack(entry.getKey());
-				runnable.run();
+		if (e.getAction() == InventoryAction.PICKUP_ONE) {
+			for (Entry<String, BLWindow> entry_manager : BL.getBaseWindowManager().getMap().entrySet()) {
+				for (Entry<ItemStack, BLWindowItemClickRunnable> entry_buttons : entry_manager.getValue().getButtons()
+						.entrySet()) {
+					if (e.getCurrentItem().isSimilar(entry_buttons.getKey())) {
+						BLWindowItemClickRunnable runnable = entry_buttons.getValue();
+						runnable.setPlayer((Player) e.getWhoClicked());
+						runnable.setItemStack(entry_buttons.getKey());
+						runnable.run();
+					}
+				}
 			}
 		}
 	}

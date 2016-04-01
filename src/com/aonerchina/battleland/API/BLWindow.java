@@ -7,10 +7,13 @@ import org.bukkit.entity.Player;
 import org.bukkit.inventory.Inventory;
 import org.bukkit.inventory.ItemStack;
 
-public class InventoryWindow {
+import com.aonerchina.battleland.BL;
+
+public class BLWindow {
 	private boolean canDrag;
 	private Inventory inventory;
 	private HashMap<ItemStack, BLWindowItemClickRunnable> hashBuffer;
+
 	/***
 	 * Create a new inventory gui window.
 	 * 
@@ -21,8 +24,8 @@ public class InventoryWindow {
 	 * @param canDrag
 	 *            If the inventory is draggable
 	 */
-	public InventoryWindow(InventoryManager manager, String name, int size, String title, boolean canDrag) {
-		manager.addWindow(name, this);
+	public BLWindow(String name, int size, String title, boolean canDrag) {
+		BL.getBaseWindowManager().addWindow(name, this);
 		this.canDrag = canDrag;
 		this.inventory = Bukkit.createInventory(null, size, title);
 		this.hashBuffer = new HashMap<ItemStack, BLWindowItemClickRunnable>();
@@ -30,6 +33,11 @@ public class InventoryWindow {
 
 	public void addButton(ItemStack item, BLWindowItemClickRunnable r) {
 		this.inventory.addItem(item);
+		this.hashBuffer.put(item, r);
+	}
+
+	public void setButton(int index, ItemStack item, BLWindowItemClickRunnable r) {
+		this.inventory.setItem(index, item);
 		this.hashBuffer.put(item, r);
 	}
 
@@ -43,5 +51,14 @@ public class InventoryWindow {
 
 	public boolean canDrag() {
 		return this.canDrag;
+	}
+
+	public HashMap<ItemStack, BLWindowItemClickRunnable> getButtons() {
+		return this.hashBuffer;
+	}
+	
+	public void clear() {
+		this.hashBuffer.clear();
+		this.inventory.clear();
 	}
 }
