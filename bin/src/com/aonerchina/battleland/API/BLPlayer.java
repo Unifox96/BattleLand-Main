@@ -38,4 +38,8 @@ public class BLPlayer extends CraftPlayer {
 			this.sendMessage(s);
 		}
 	}
+	
+	public void initConfig() {
+		
+	}
 }

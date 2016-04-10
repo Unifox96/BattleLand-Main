@@ -6,8 +6,8 @@ import java.util.List;
 
 import org.bukkit.plugin.java.JavaPlugin;
 
-import com.aonerchina.battleland.API.Profession;
 import com.aonerchina.battleland.API.BLWindowManager;
+import com.aonerchina.battleland.API.Profession;
 import com.aonerchina.battleland.Event.EventPlayer;
 import com.aonerchina.battleland.Util.ConfigUtil;
 

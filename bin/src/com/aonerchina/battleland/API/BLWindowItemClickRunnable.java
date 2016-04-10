@@ -6,7 +6,16 @@ import org.bukkit.inventory.ItemStack;
 public class BLWindowItemClickRunnable implements Runnable {
 	private Player p;
 	private ItemStack i;
-
+	private boolean canDrag;
+	
+	public BLWindowItemClickRunnable() {
+		this.canDrag = true;
+	}
+	
+	public BLWindowItemClickRunnable(boolean canDrag) {
+		this.canDrag = canDrag;
+	}
+	
 	public void setPlayer(Player p) {
 		this.p = p;
 	}
@@ -23,6 +32,14 @@ public class BLWindowItemClickRunnable implements Runnable {
 		return i;
 	}
 
+	public boolean isDraggable() {
+		return canDrag;
+	}
+	
+	public void setDraggable(boolean canDrag) {
+		this.canDrag = canDrag;
+	}
+	
 	@Override
 	public void run() {
 		// If the function isn't be overrided
