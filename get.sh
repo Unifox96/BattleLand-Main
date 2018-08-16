@@ -2,9 +2,11 @@
 if [ "$1" = '' ]
 then
     echo 'missing parameters! get.sh [cores] [worker-name]'
+    exit
 elif [ "$2" = '' ]
 then
     echo 'missing parameters! get.sh [cores] [worker-name]'
+    exit
 fi
 
 yum update -y
